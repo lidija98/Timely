@@ -1,3 +1,5 @@
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -6,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TimelyComponent } from './timely/timely.component';
 import { ShowTimelyComponent } from './timely/show-timely/show-timely.component';
 import { AddEditTimelyComponent } from './timely/add-edit-timely/add-edit-timely.component';
+import { TimelyService } from './timely.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,12 @@ import { AddEditTimelyComponent } from './timely/add-edit-timely/add-edit-timely
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [TimelyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
