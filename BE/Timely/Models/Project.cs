@@ -10,11 +10,11 @@ namespace Timely.Models
         [StringLength(30)]
         public string ProjectName { get; set; } = string.Empty;
 
-        public DateTimeOffset Start { get; set; }
+        public DateTime Start { get; set; }
 
-        public DateTimeOffset Stop { get; set; }
+        public DateTime Stop { get; set; }
 
-        public DateTimeOffset Duration { get; set; }
+        public DateTime Duration { get; set; }
 
     }
 }

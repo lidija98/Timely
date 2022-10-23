@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Timely.Data;
+using Timely.Models;
 
 namespace Timely.Controllers
 {
@@ -26,6 +27,18 @@ namespace Timely.Controllers
             var projects = await _dataContext.Projects.ToListAsync();
 
             return Ok(projects);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProject([FromBody] Project projectRequest)
+        {
+            projectRequest.Id = Guid.NewGuid(); // creates a new Id for project
+
+            await _dataContext.Projects.AddAsync(projectRequest);
+
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(projectRequest);
         }
     }
 }
