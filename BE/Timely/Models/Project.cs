@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Timely.Models
 {
-    public class Projects
+    public class Project
     {
         public Guid Id { get; set; }
 
