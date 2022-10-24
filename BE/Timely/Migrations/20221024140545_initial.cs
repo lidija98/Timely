@@ -14,10 +14,10 @@ namespace Timely.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProjectName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Start = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    Stop = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    Duration = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                    Projects = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Start = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Stop = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

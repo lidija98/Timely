@@ -12,8 +12,8 @@ using Timely.Data;
 namespace Timely.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221023171559_second")]
-    partial class second
+    [Migration("20221024140545_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace Timely.Migrations
                     b.Property<DateTime>("Duration")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Projects")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 

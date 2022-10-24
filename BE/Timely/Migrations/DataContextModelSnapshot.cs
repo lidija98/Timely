@@ -31,7 +31,7 @@ namespace Timely.Migrations
                     b.Property<DateTime>("Duration")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Projects")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 

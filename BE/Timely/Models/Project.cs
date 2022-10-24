@@ -8,7 +8,7 @@ namespace Timely.Models
         public Guid Id { get; set; }
 
         [StringLength(30)]
-        public string ProjectName { get; set; } = string.Empty;
+        public string Projects { get; set; } = string.Empty;
 
         public DateTime Start { get; set; }
 
