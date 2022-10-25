@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectsService } from './services/projects.service';
+import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProjectsService } from './services/projects.service';
     AppComponent,
     ProjectListComponent,
     TimerComponent,
-    CompletedEntriesComponent
+    CompletedEntriesComponent,
+    ModalComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,35 @@
 ﻿<Properties StartupConfiguration="{4EF7A847-E2B0-4B47-A74C-AC316A324928}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TimelyController.cs">
+    <Files>
+      <File FileName="Data/DataContext.cs" Line="13" Column="39" />
+      <File FileName="appsettings.json" Line="11" Column="4" />
+      <File FileName="Controllers/TimelyController.cs" Line="72" Column="10" />
+      <File FileName="Models/Project.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Timely" expanded="True">
+            <Node name="Timely" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Timely FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Timely PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

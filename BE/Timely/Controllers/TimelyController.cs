@@ -44,29 +44,19 @@ namespace Timely.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProject(Guid id, Project project)
         {
-            if(id != project.Id)
+            var projects = await _dataContext.Projects.FindAsync(id);
+
+            if(projects == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _dataContext.Entry(project).State = EntityState.Modified;
+            projects.Projects = project.Projects;
+            projects.Stop = project.Stop;
 
-            try
-            {
-                await _dataContext.SaveChangesAsync();
-            }
-            catch(DbUpdateConcurrencyException)
-            {
-                if (!ProjectExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return NoContent();
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(projects);
         }
 
         [HttpPost]
@@ -79,11 +69,6 @@ namespace Timely.Controllers
             await _dataContext.SaveChangesAsync();
 
             return Ok(project);
-        }
-
-        private bool ProjectExists(Guid id)
-        {
-            return _dataContext.Projects.Any(e => e.Id == id);
         }
     }
 }
