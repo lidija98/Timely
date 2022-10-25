@@ -22,23 +22,68 @@ namespace Timely.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllProjects()
+        public async Task<ActionResult<IEnumerable<Project>>> GetAllProjects()
         {
-            var projects = await _dataContext.Projects.ToListAsync();
+            return await _dataContext.Projects.ToListAsync();
 
-            return Ok(projects);
+        }
+
+        [HttpGet("{id:Guid}")]
+        public async Task<ActionResult<Project>> GetProject(Guid id)
+        {
+            var project = await _dataContext.Projects.FindAsync(id);
+
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            return project;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProject(Guid id, Project project)
+        {
+            if(id != project.Id)
+            {
+                return BadRequest();
+            }
+
+            _dataContext.Entry(project).State = EntityState.Modified;
+
+            try
+            {
+                await _dataContext.SaveChangesAsync();
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if (!ProjectExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProject([FromBody] Project projectRequest)
+        public async Task<ActionResult<Project>> PostProject(Project project)
         {
-            projectRequest.Id = Guid.NewGuid(); // creates a new Id for project
+            project.Id = Guid.NewGuid();
 
-            await _dataContext.Projects.AddAsync(projectRequest);
+            await _dataContext.Projects.AddAsync(project);
 
             await _dataContext.SaveChangesAsync();
 
-            return Ok(projectRequest);
+            return Ok(project);
+        }
+
+        private bool ProjectExists(Guid id)
+        {
+            return _dataContext.Projects.Any(e => e.Id == id);
         }
     }
 }
