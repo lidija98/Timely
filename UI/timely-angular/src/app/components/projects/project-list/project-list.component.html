@@ -1,7 +1,7 @@
 <div class="container">
     <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Stop</button>
     <h1 class="mb-3">Projects</h1>
-    <table class="table table-striped" *ngIf="projects && projects.length>0">
+    <table class="table table-striped" *ngIf="table">
         <thead>
             <tr>
                 <th>Project</th>
@@ -11,36 +11,35 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let projects of projects ">
-                <td>{{projects.projects}}</td>
-                <td>{{projects.start}}</td>
-                <td>{{projects.stop}}</td>
-                <td>{{projects.duration}}</td>
+            <tr *ngFor="let table of table | slice:0:1">
+                <td></td>
+                <td>{{table.start}}</td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
     </table>
-    <p *ngIf="!projects || projects.length<=0">No Projects Found</p>
+    <p *ngIf="!table">No Projects Found</p>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Stop Timer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="">
+<form #form="ngForm" (ngSubmit)="addProject()">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Stop Timer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Project Name*</label>
-                        <input type="name" class="form-control" id="name">
-                      </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-dark">Stop Timer</button>
+                        <input type="name" class="form-control" id="name" name="name" [(ngModel)]="addProjectRequest.projects">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" for="stop" class="btn btn-outline-dark" id="stop" name="stop"  [(ngModel)]="addProjectRequest">Stop Timer</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+</form>

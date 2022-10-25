@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { TimerStop } from 'src/app/models/project.model';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-completed-entries',
@@ -8,9 +10,29 @@ import { Router } from '@angular/router';
 })
 export class CompletedEntriesComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  addProjectRequest: TimerStop = {
+    id: '',
+    projects: '',
+    stop: new Date
+  };
+
+  constructor( private route: ActivatedRoute,
+    private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
-  }
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id = params.get('id');
 
+        if(id) {
+          this.projectsService.getProject(id)
+          .subscribe({
+            next: (response) => {
+              this.addProjectRequest = response;
+            }
+          });
+        }
+      }
+    })
+  }
 }

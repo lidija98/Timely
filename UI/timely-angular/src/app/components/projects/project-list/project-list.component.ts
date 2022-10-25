@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/models/project.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TimerStop, TimerStart } from 'src/app/models/project.model';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
@@ -10,21 +10,52 @@ import { ProjectsService } from 'src/app/services/projects.service';
 })
 export class ProjectListComponent implements OnInit {
 
-  projects: Project[] = [];
+  table: TimerStart[] = [];
+
+  addProjectRequest: TimerStop = {
+    id: '',
+    projects: '',
+    stop: new Date
+  };
 
   constructor(
-    private projectsService: ProjectsService, 
+    private projectsService: ProjectsService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
     this.projectsService.getAllProjects()
     .subscribe({
       next: (projects) => {
-        this.projects = projects;
+        this.table = projects;
       },
       error: (response) => {
         console.log(response);
       }
     })
+
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id = params.get('id');
+
+        if(id){
+          this.projectsService.getProject(id)
+          .subscribe({
+            next: (response) => {
+              this.addProjectRequest = response;
+            }
+          })
+        }
+      }
+    })
   }
+
+  addProject(){
+    this.projectsService.addProject(this.addProjectRequest.id, this.addProjectRequest)
+    .subscribe({
+      next: (response) => {
+        this.router.navigate(['completed-entries']);
+    }
+  });
+}
 }

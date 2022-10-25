@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Project } from '../models/project.model';
+import { TimerStart, TimerStop, Table } from '../models/project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,20 @@ export class ProjectsService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.baseApiUrl + '/api/timely');
+  getAllProjects(): Observable<Table[]> {
+    return this.http.get<Table[]>(this.baseApiUrl + '/api/timely');
+  }
+
+  addTime(addTimeRequest: TimerStart): Observable<TimerStart> {
+    addTimeRequest.id = '00000000-0000-0000-0000-000000000000';
+    return this.http.post<TimerStart>(this.baseApiUrl + '/api/timely', addTimeRequest);
+  }
+
+  getProject(id: string): Observable<TimerStop> {
+    return this.http.get<TimerStop>(this.baseApiUrl + '/api/timely' + id);
+  }
+
+  addProject(id: string, addProjectRequest: TimerStop): Observable<TimerStop> {
+    return this.http.put<TimerStop>(this.baseApiUrl + '/api/timely' + id, addProjectRequest);
   }
 }
