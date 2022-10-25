@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TimerStop, TimerStart } from 'src/app/models/project.model';
+import { Projects } from 'src/app/models/project.model';
 import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
@@ -10,12 +10,14 @@ import { ProjectsService } from 'src/app/services/projects.service';
 })
 export class ProjectListComponent implements OnInit {
 
-  table: TimerStart[] = [];
+  projects: Projects[] = [];
 
-  addProjectRequest: TimerStop = {
+  addProjectRequest: Projects = {
     id: '',
     projects: '',
-    stop: new Date
+    start: new Date,
+    stop: new Date,
+    duration: new Date
   };
 
   constructor(
@@ -27,7 +29,7 @@ export class ProjectListComponent implements OnInit {
     this.projectsService.getAllProjects()
     .subscribe({
       next: (projects) => {
-        this.table = projects;
+        this.projects = projects;
       },
       error: (response) => {
         console.log(response);

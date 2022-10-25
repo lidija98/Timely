@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
-import { TimerStart} from 'src/app/models/project.model';
+import { Projects} from 'src/app/models/project.model';
 
 @Component({
   selector: 'app-timer',
@@ -9,9 +9,12 @@ import { TimerStart} from 'src/app/models/project.model';
 })
 export class TimerComponent implements OnInit {
 
-  addTimeRequest: TimerStart = {
+  addTimeRequest: Projects = {
     id: '',
-    start: new Date()
+    projects: '',
+    start: new Date(),
+    stop: new Date(),
+    duration: new Date()
   };
 
   constructor(private projectsService: ProjectsService) { }
