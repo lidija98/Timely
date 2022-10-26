@@ -40,10 +40,6 @@ namespace Timely.Controllers
                 return NotFound();
             }
 
-            TimeSpan timeSpan = project.Stop - project.Start;
-            dt = new DateTime();
-            project.Duration = dt + timeSpan;
-
             await _dataContext.SaveChangesAsync();
 
             return project;
@@ -61,6 +57,10 @@ namespace Timely.Controllers
 
             projects.Projects = project.Projects;   
             projects.Stop = project.Stop;
+
+            TimeSpan timeSpan = projects.Stop - projects.Start;
+            dt = new DateTime();
+            projects.Duration = dt + timeSpan;
 
             await _dataContext.SaveChangesAsync();
 
