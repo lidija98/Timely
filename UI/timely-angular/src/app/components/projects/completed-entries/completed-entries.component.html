@@ -1,5 +1,5 @@
 <div class="container">
-    <button type="button" class="btn btn-outline-dark">Start</button>
+    <button type="button" class="btn btn-outline-dark" [routerLink]="''">Start</button>
     <input class="form-control" type="text" name="projectName" [(ngModel)]="projectName" (ngModelChange)="Search()"
         placeholder="Enter Project Name to search">
     <table class="table table-striped" *ngIf="projects">

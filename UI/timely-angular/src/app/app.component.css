@@ -1,0 +1,15 @@
+nav.navbar{
+    padding: 30px;
+}
+
+div.container {
+    text-align: center;
+    display: inline;
+    padding: 30px 30px;
+}
+
+a.navbar-brand{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 30px 30px;
+    font-size: 50px;
+}

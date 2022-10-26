@@ -1,0 +1,10 @@
+div button.btn.btn-outline-dark {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    padding: 5px 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

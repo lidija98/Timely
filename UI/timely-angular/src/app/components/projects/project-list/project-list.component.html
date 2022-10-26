@@ -1,7 +1,6 @@
 <div class="container">
     <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" 
     data-bs-target="#exampleModal" (click)="stopTime()">Stop</button>
-    <h1 class="mb-3">Projects</h1>
     <table class="table table-striped" *ngIf="projects">
         <thead>
             <tr>
@@ -28,11 +27,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalLabel">Stop Timer</h1>
+                    <h1 class="modal-title mb-5" id="exampleModalLabel"></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
+                    <div class="mb-5">
                         <label for="name" class="form-label">Project Name*</label>
                         <input type="name" class="form-control" id="name" name="name" [(ngModel)]="addProjectRequest.projects">
                     </div>

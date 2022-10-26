@@ -1,0 +1,16 @@
+div.button-container {
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+div.button-container button {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    padding: 16px 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
