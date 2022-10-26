@@ -47,6 +47,7 @@ export class ProjectListComponent implements OnInit {
             next: (response) => {
               this.addProjectRequest = response;
               console.log(response);
+              this.router.navigate(["timer/:id"]);
             }
           })
         }
@@ -54,12 +55,16 @@ export class ProjectListComponent implements OnInit {
     })
   }
 
+  stopTime() {
+    this.addProjectRequest.stop = new Date();
+  }
+
   addProject(){
     this.projectsService.addProject(this.addProjectRequest.id, this.addProjectRequest)
     .subscribe({
       next: (response) => {
-        this.router.navigate(['completed-entries']);
         console.log(response);
+        this.router.navigateByUrl('/timer/:id/completed-entries');
     }
   });
 }

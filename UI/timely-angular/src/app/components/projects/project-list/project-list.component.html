@@ -1,6 +1,6 @@
 <div class="container">
     <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" 
-    data-bs-target="#exampleModal">Stop</button>
+    data-bs-target="#exampleModal" (click)="stopTime()">Stop</button>
     <h1 class="mb-3">Projects</h1>
     <table class="table table-striped" *ngIf="projects">
         <thead>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-dark">Stop Timer</button>
+                    <button type="submit" class="btn btn-outline-dark" data-bs-dismiss="modal">Stop Timer</button>
                 </div>
             </div>
         </div>

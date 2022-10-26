@@ -1,1 +1,23 @@
-<p>completed-entries works!</p>
+<div class="container">
+    <button type="button" class="btn btn-outline-dark">Stop</button>
+    <h1 class="mb-3">Projects</h1>
+    <table class="table table-striped" *ngIf="projects">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Start</th>
+                <th>Stop</th>   
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let projects of projects">
+                <td>{{projects.projects}}</td>
+                <td>{{projects.start}}</td>
+                <td>{{projects.stop}}</td>
+                <td>{{projects.duration}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!projects">No Projects Found</p>
+</div>
