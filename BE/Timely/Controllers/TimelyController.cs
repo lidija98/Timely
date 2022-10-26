@@ -16,6 +16,8 @@ namespace Timely.Controllers
     {
         private readonly DataContext _dataContext;
 
+        private DateTime dt;
+
         public TimelyController(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -38,6 +40,12 @@ namespace Timely.Controllers
                 return NotFound();
             }
 
+            TimeSpan timeSpan = project.Stop - project.Start;
+            dt = new DateTime();
+            project.Duration = dt + timeSpan;
+
+            await _dataContext.SaveChangesAsync();
+
             return project;
         }
 
@@ -51,7 +59,7 @@ namespace Timely.Controllers
                 return NotFound();
             }
 
-            projects.Projects = project.Projects;
+            projects.Projects = project.Projects;   
             projects.Stop = project.Stop;
 
             await _dataContext.SaveChangesAsync();
