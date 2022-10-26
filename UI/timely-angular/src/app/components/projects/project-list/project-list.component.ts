@@ -15,9 +15,9 @@ export class ProjectListComponent implements OnInit {
   addProjectRequest: Projects = {
     id: '',
     projects: '',
-    start: new Date,
-    stop: new Date,
-    duration: new Date
+    start: new Date(),
+    stop: new Date(),
+    duration: new Date()
   };
 
   constructor(
@@ -47,7 +47,6 @@ export class ProjectListComponent implements OnInit {
             next: (response) => {
               this.addProjectRequest = response;
               console.log(response);
-              this.router.navigate(["timer/:id"]);
             }
           })
         }

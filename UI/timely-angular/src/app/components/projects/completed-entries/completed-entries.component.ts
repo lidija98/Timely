@@ -10,11 +10,13 @@ import { ProjectsService } from 'src/app/services/projects.service';
 })
 export class CompletedEntriesComponent implements OnInit {
 
+  projectName: any;
+  p: number =1;
+
   projects: Projects[] = [];
 
   constructor( private route: ActivatedRoute,
-    private router: Router,
-    private projectsService: ProjectsService,) { }
+    private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
     this.projectsService.getAllProjects()
@@ -26,5 +28,23 @@ export class CompletedEntriesComponent implements OnInit {
         console.log(response);
       }
     })
+  }
+
+  Search(){
+    if(this.projectName == ""){
+      this.ngOnInit();
+    }
+    else {
+      this.projects = this.projects.filter(res => {
+        return res.projects.toLocaleLowerCase().match(this.projectName.toLocaleLowerCase());
+      });
+    }
+  }
+
+  key: string = 'id';
+  reverse: boolean = false;
+  sort(key: string) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 }

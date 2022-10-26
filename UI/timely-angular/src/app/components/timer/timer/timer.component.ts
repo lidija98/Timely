@@ -33,7 +33,6 @@ export class TimerComponent implements OnInit {
       next: (projects) => {
         console.log(projects);
         this.router.navigate(['/timer/', projects.id])
-        //projects.start =
       }
     })
   }

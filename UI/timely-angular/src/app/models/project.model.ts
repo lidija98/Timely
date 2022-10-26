@@ -1,7 +1,7 @@
 export interface Projects {
     id: string,
     projects: string,
-    start: Date,
-    stop: Date,
-    duration: Date
+    start: any,
+    stop: any,
+    duration: any
 }
