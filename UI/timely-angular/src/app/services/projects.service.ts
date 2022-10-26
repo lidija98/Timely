@@ -23,10 +23,10 @@ export class ProjectsService {
   }
 
   getProject(id: string): Observable<Projects> {
-    return this.http.get<Projects>(this.baseApiUrl + '/api/timely' + id);
+    return this.http.get<Projects>(this.baseApiUrl + '/api/timely/' + id);
   }
 
   addProject(id: string, addProjectRequest: Projects): Observable<Projects> {
-    return this.http.put<Projects>(this.baseApiUrl + '/api/timely' + id, addProjectRequest);
+    return this.http.put<Projects>(this.baseApiUrl + '/api/timely/' + id, addProjectRequest);
   }
 }

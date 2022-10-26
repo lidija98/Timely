@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Projects} from 'src/app/models/project.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-timer',
@@ -16,19 +17,22 @@ export class TimerComponent implements OnInit {
     stop: new Date(),
     duration: new Date()
   };
+  static AddTimerRequest: any;
 
-  constructor(private projectsService: ProjectsService) { }
+  constructor(private projectsService: ProjectsService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     
   }
 
   getTime() {
-    let start = new Date().toISOString().slice(0, 19).replace('T', ' ')
     this.projectsService.addTime(this.addTimeRequest)
     .subscribe({
-      next: (start) => {
-        console.log(start);
+      next: (projects) => {
+        console.log(projects);
+        this.router.navigate(['/timer/', projects.id])
       }
     })
   }

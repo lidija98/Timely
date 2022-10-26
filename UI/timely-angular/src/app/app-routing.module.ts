@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: TimerComponent },
   { path: 'timer', component: ProjectListComponent },
   { path: 'timer/:id', component: ProjectListComponent },
-  { path: 'timer/completed-entries', component: CompletedEntriesComponent }
+  { path: 'timer/:id/completed-entries', component: CompletedEntriesComponent }
 ];
 
 @NgModule({

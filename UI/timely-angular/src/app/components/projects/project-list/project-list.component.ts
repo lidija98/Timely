@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projects } from 'src/app/models/project.model';
 import { ProjectsService } from 'src/app/services/projects.service';
@@ -39,12 +39,14 @@ export class ProjectListComponent implements OnInit {
     this.route.paramMap.subscribe({
       next: (params) => {
         const id = params.get('id');
+        console.log(id);
 
         if(id){
           this.projectsService.getProject(id)
           .subscribe({
             next: (response) => {
               this.addProjectRequest = response;
+              console.log(response);
             }
           })
         }
@@ -57,6 +59,7 @@ export class ProjectListComponent implements OnInit {
     .subscribe({
       next: (response) => {
         this.router.navigate(['completed-entries']);
+        console.log(response);
     }
   });
 }
