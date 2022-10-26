@@ -12,6 +12,9 @@ export class ProjectListComponent implements OnInit {
 
   projects: Projects[] = [];
 
+  projectName: any;
+  p: number =1;
+
   addProjectRequest: Projects = {
     id: '',
     projects: '',
@@ -66,5 +69,22 @@ export class ProjectListComponent implements OnInit {
         this.router.navigateByUrl('/timer/:id/completed-entries');
     }
   });
+}
+Search(){
+  if(this.projectName == ""){
+    this.ngOnInit();
+  }
+  else {
+    this.projects = this.projects.filter(res => {
+      return res.projects.toLocaleLowerCase().match(this.projectName.toLocaleLowerCase());
+    });
+  }
+}
+
+key: string = 'id';
+reverse: boolean = false;
+sort(key: string) {
+  this.key = key;
+  this.reverse = !this.reverse;
 }
 }

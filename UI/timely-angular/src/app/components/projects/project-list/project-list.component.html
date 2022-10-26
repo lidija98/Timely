@@ -5,13 +5,13 @@
         <thead>
             <tr>
                 <th>Project</th>
-                <th>Start</th>
+                <th (click)="sort('start')">Start&nbsp; <i class="fa fa-sort"></i></th>
                 <th>Stop</th>   
                 <th>Duration</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let projects of projects | slice: 0:1">
+            <tr *ngFor="let projects of projects | orderBy: key: reverse | paginate: {itemsPerPage:5, currentPage:p}">
                 <td></td>
                 <td>{{projects.start}}</td>
                 <td></td>
@@ -20,6 +20,7 @@
         </tbody>
     </table>
     <p *ngIf="!projects">No Projects Found</p>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <form #form="ngForm" (ngSubmit)="addProject()">
