@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Projects } from 'src/app/models/project.model';
 import { ProjectsService } from 'src/app/services/projects.service';
 
@@ -15,8 +14,7 @@ export class CompletedEntriesComponent implements OnInit {
 
   projects: Projects[] = [];
 
-  constructor( private route: ActivatedRoute,
-    private projectsService: ProjectsService) { }
+  constructor( private projectsService: ProjectsService) { }
 
   ngOnInit(): void {
     this.projectsService.getAllProjects()
